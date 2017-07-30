@@ -1,0 +1,24 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.majed.virtualwaitingroom.activity.MainActivity">
+
+    <item
+        android:id="@+id/notificationBox" android:icon="@drawable/ic_mail_outline_black_24dp" app:showAsAction="always"   android:title="Inbox"/>
+    <item
+        android:id="@+id/UserName"  app:showAsAction="always" android:title="Eric DC"/>
+    <item
+        android:id="@+id/onlineStatus"  app:showAsAction="never" android:title="Online Status">
+        <menu>
+            <item android:id="@+id/online" android:title="Online"></item>
+            <item android:id="@+id/offline" android:title="Offline"></item>
+            <item android:id="@+id/away" android:title="Away"></item>
+            <item android:id="@+id/noDisturb" android:title="Don't Disturb"></item>
+        </menu>
+    </item>
+    <item
+        android:id="@+id/logOut"  app:showAsAction="never" android:title="Log Out">
+    </item>
+</menu>
