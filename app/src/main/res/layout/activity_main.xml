@@ -6,6 +6,12 @@
     android:layout_height="match_parent"
     tools:context="com.example.majed.virtualwaitingroom.activity.MainActivity">
 
+    <fragment android:name="com.example.majed.virtualwaitingroom.fragment.MenuFragment"
+        android:id="@+id/menuItemFragment"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <android.support.v7.widget.RecyclerView
         android:layout_width="368dp"
         android:layout_height="495dp"

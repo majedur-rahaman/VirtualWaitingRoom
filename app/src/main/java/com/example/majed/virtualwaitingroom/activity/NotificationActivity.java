@@ -83,38 +83,6 @@ public class NotificationActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.activity_main_actions, menu);
-
-        return super.onCreateOptionsMenu(menu);
-    }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        // Handle action bar actions click
-        switch (item.getItemId()) {
-            case R.id.notificationBox:
-//                Intent intent = new Intent(getApplicationContext(),NotificationActivity.class);
-//                startActivity(intent);
-//                setContentView(R.layout.activity_notification);
-                return true;
-            case R.id.onlineStatus:
-//                try {
-//                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + getPackageName())));
-//                } catch (android.content.ActivityNotFoundException anfe) {
-//                    startActivity(new Intent(Intent.ACTION_VIEW,
-//                            Uri.parse("http://play.google.com/store/apps/details?id=" + getPackageName())));
-//                }
-                return true;
-            case R.id.logOut:
-                session.logoutUser();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
-    @Override
     public void onBackPressed(){
         Intent intent = new Intent(getApplicationContext(),MainActivity.class);
         startActivity(intent);
