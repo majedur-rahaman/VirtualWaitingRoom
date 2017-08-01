@@ -34,6 +34,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
     private int rawLayout;
     private Context context;
     SessionManager session;
+
     final  String messageUnRead=" ,want's to connect with video conversation,call now.";
     final  String messageRead=" ,has connect with video conversation.";
 
@@ -96,6 +97,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
                     public void onResponse(Call<Boolean> call, Response<Boolean> response) {
                         holder.dCallNow.setVisibility(View.GONE);
                         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(notifications.get(position).getUrl()));
+                        browserIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         context.startActivity(browserIntent);
                     }
 

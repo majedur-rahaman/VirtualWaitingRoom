@@ -33,7 +33,7 @@
             android:label="Waiting Room"
             android:theme="@style/Theme.AppCompat.Light" />
         <activity android:name=".activity.NotificationActivity"
-            android:label="Waiting Room"
+            android:label=""
             android:theme="@style/Theme.AppCompat.Light"></activity>
     </application>
 

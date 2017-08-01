@@ -10,7 +10,7 @@
     <item
         android:id="@+id/UserName"  app:showAsAction="always" android:title="Eric DC" />
     <item
-        android:id="@+id/onlineStatus"  app:showAsAction="never" android:title="Online Status">
+        android:id="@+id/onlineStatus"  app:showAsAction="ifRoom|never" android:title="Online Status">
         <menu>
             <item android:id="@+id/online" android:title="Online"></item>
             <item android:id="@+id/offline" android:title="Offline"></item>

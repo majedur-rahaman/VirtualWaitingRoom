@@ -71,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
                 else
                 {
                     recyclerView.setAdapter(new DoctorsAdapter(doctors, R.layout.list_item_doctor, getApplicationContext()));
+                   // recyclerView.setAdapter(new DoctorsAdapter(doctors, R.layout.list_item_doctor,getApplicationContext()));
                 }
             }
 

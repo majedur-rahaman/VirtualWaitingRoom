@@ -13,6 +13,6 @@ public class UserInformation {
     public String Password;
     public String HasDoctor;
     public String Employer;
-    public String OnlineStatus;
+    public int OnlineStatus;
 
 }

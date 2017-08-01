@@ -118,9 +118,13 @@ public class DoctorsAdapter extends RecyclerView.Adapter<DoctorsAdapter.DoctorVi
                     @Override
                     public void onResponse(Call<Boolean> call, Response<Boolean> response) {
 
-                        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(myUrl));
-                        context.startActivity(browserIntent);
+//                        Intent intent = new Intent(Intent.ACTION_VIEW);
+//                        intent.setData(Uri.parse("http://www.stackoverflow.com"));
+//                        context.startActivity(intent);
 
+                        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(myUrl));
+                        browserIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        context.startActivity(browserIntent);
                     }
 
                     @Override

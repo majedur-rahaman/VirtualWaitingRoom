@@ -107,7 +107,7 @@ public class LoginActivity extends Activity {
                 else
                 {
 
-                    session.createLoginSession(userInformation.FullName,userInformation.OnlineStatus,userInformation.ContactId);
+                    session.createLoginSession(userInformation.FullName,userInformation.OnlineStatus,userInformation.ContactId,userInformation.Role);
                     Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                     startActivity(intent);
                   //  setContentView(R.layout.activity_main);

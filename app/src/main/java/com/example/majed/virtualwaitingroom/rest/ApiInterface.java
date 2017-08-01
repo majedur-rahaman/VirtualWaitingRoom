@@ -4,6 +4,7 @@ import com.example.majed.virtualwaitingroom.ViewModel.UserInformation;
 import com.example.majed.virtualwaitingroom.model.Doctor;
 import com.example.majed.virtualwaitingroom.model.OnlineCallStatus;
 import com.example.majed.virtualwaitingroom.model.OnlineConversation;
+import com.example.majed.virtualwaitingroom.model.OnlineStatus;
 import com.example.majed.virtualwaitingroom.model.SignIn;
 
 import java.util.List;
@@ -32,4 +33,7 @@ public interface  ApiInterface {
 
     @POST("waitingroom/CallStatus")
     Call<Boolean> UpdateCallStatus(@Body OnlineCallStatus callStatus);
+
+    @POST("waitingroom/OnlineStatus")
+    Call<OnlineStatus> UpdateOnlineStatus(@Body OnlineStatus onlineStatus);
 }
