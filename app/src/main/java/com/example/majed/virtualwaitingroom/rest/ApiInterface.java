@@ -23,6 +23,10 @@ import retrofit2.http.Query;
 public interface  ApiInterface {
     @POST("waitingroom/login")
     Call<UserInformation> getSignin(@Body SignIn signInModel);
+
+    @GET("waitingroom/LogOut/{contactId}")
+    Call<Boolean> logOut(@Path("contactId") String contactId);
+
     @GET("waitingroom/doctorList")
     Call<List<Doctor>> getDoctorList();
     @POST("waitingroom/UpdateStatus")

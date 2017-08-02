@@ -83,10 +83,12 @@ public class NotificationActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed(){
-        Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-        startActivity(intent);
-        setContentView(R.layout.activity_main);
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent  i = new Intent(NotificationActivity.this, MainActivity.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(i);
+        finish();
     }
 
 }

@@ -149,6 +149,8 @@ public class SessionManager {
         editor.clear();
         editor.commit();
 
+
+
         // After logout redirect user to Loging Activity
         Intent i = new Intent(_context, LoginActivity.class);
         // Closing all the Activities

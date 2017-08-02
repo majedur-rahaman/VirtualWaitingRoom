@@ -20,7 +20,7 @@
 
         <activity
             android:name=".activity.LoginActivity"
-            android:label="Waiting Room"
+            android:label="MMHUB Waiting Room"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,10 +30,10 @@
         </activity>
         <activity
             android:name=".activity.MainActivity"
-            android:label="Waiting Room"
+            android:label="MMHUB Waiting Room"
             android:theme="@style/Theme.AppCompat.Light" />
         <activity android:name=".activity.NotificationActivity"
-            android:label=""
+            android:label="MMHUB Waiting Room"
             android:theme="@style/Theme.AppCompat.Light"></activity>
     </application>
 

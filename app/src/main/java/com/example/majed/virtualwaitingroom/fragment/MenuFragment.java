@@ -94,7 +94,7 @@ public class MenuFragment extends Fragment {
                 styleMenuOnclick(item,907660003,checkStatus(status));
                 return true;
             case R.id.logOut:
-                session.logoutUser();
+                UserLogOut();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -149,7 +149,6 @@ public class MenuFragment extends Fragment {
             @Override
             public void onResponse(Call<OnlineStatus> call, Response<OnlineStatus> response) {
 
-
                 session.setUpdatedOnlineStatus(onlineStatus.getOnlineStatus());
                // Toast.makeText(getActivity().getApplicationContext(),"Updated" + session.getUserDetails().get(SessionManager.KEY_STATUS),Toast.LENGTH_LONG).show();
 
@@ -181,6 +180,34 @@ public class MenuFragment extends Fragment {
         }
 
         return statusColor;
+    }
+
+    private void UserLogOut(){
+
+        String role= session.getUserDetails().get(SessionManager.KEY_ROLE);
+        String contactId= session.getUserDetails().get(SessionManager.KEY_CONTACTID);
+
+        if(role.equals("Doctor")){
+
+            ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
+
+           Call<Boolean> call = apiService.logOut(contactId);
+
+            call.enqueue(new Callback<Boolean>() {
+                @Override
+                public void onResponse(Call<Boolean> call, Response<Boolean> response) {
+                    //updated
+                }
+
+                @Override
+                public void onFailure(Call<Boolean> call, Throwable t) {
+
+                }
+            });
+
+        }
+
+        session.logoutUser();
     }
 
 }

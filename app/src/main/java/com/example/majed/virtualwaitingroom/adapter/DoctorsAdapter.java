@@ -90,8 +90,8 @@ public class DoctorsAdapter extends RecyclerView.Adapter<DoctorsAdapter.DoctorVi
         // name
      final String uName = user.get(SessionManager.KEY_NAME);
 
-        String[] callerN = uName.split("\\s");
-        String callerP = callerN[calleeN.length-1];
+       String[] callerN = uName.split("\\s");
+        String callerP = callerN[callerN.length-1];
 
         // contact id
       final String ucontactId = user.get(SessionManager.KEY_CONTACTID);

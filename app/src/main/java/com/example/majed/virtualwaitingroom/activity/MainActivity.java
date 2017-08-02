@@ -71,14 +71,14 @@ public class MainActivity extends AppCompatActivity {
                 else
                 {
                     recyclerView.setAdapter(new DoctorsAdapter(doctors, R.layout.list_item_doctor, getApplicationContext()));
-                   // recyclerView.setAdapter(new DoctorsAdapter(doctors, R.layout.list_item_doctor,getApplicationContext()));
+
                 }
             }
 
             @Override
             public void onFailure(Call<List<Doctor>> call, Throwable t) {
 
-                Toast.makeText(getApplicationContext(),"Login Failed!",Toast.LENGTH_LONG).show();
+              //  Toast.makeText(getApplicationContext(),"Login Failed!",Toast.LENGTH_LONG).show();
             }
         });
 
