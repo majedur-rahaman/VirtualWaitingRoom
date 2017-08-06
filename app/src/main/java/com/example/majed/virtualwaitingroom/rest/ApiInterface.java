@@ -40,4 +40,7 @@ public interface  ApiInterface {
 
     @POST("waitingroom/OnlineStatus")
     Call<OnlineStatus> UpdateOnlineStatus(@Body OnlineStatus onlineStatus);
+    @GET("waitingroom/NotificationCount/{doctorId}")
+    Call<Integer> UnReadNotificationCount(@Path("doctorId") String doctorId);
+
 }

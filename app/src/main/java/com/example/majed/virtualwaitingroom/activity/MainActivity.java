@@ -1,6 +1,7 @@
 package com.example.majed.virtualwaitingroom.activity;
 
 import android.content.Intent;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.example.majed.virtualwaitingroom.R;
 import com.example.majed.virtualwaitingroom.Session.SessionManager;
@@ -31,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
 
     SessionManager session;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +52,26 @@ public class MainActivity extends AppCompatActivity {
 
         //Load All doctors list.
         LoadDoctorList();
+
+       //Swipe Refresh
+        final SwipeRefreshLayout swipeRefreshLayout=(SwipeRefreshLayout)findViewById(R.id.swiperefresh);
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+
+                LoadDoctorList();
+
+                if (swipeRefreshLayout.isRefreshing()) {
+                    swipeRefreshLayout.setRefreshing(false);
+                }
+            }
+        });
+
+
+
     }
+
 
     private void LoadDoctorList(){
 
@@ -70,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else
                 {
+
                     recyclerView.setAdapter(new DoctorsAdapter(doctors, R.layout.list_item_doctor, getApplicationContext()));
 
                 }

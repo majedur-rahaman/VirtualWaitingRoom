@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.LayerDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.FontsContract;
@@ -26,6 +28,7 @@ import android.widget.Toast;
 import com.example.majed.virtualwaitingroom.R;
 import com.example.majed.virtualwaitingroom.Session.SessionManager;
 import com.example.majed.virtualwaitingroom.activity.NotificationActivity;
+import com.example.majed.virtualwaitingroom.helper.BagdeDrawable;
 import com.example.majed.virtualwaitingroom.model.OnlineStatus;
 import com.example.majed.virtualwaitingroom.rest.ApiClient;
 import com.example.majed.virtualwaitingroom.rest.ApiInterface;
@@ -34,6 +37,8 @@ import butterknife.Optional;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static com.example.majed.virtualwaitingroom.helper.BadgeChange.setBadgeCount;
 
 
 public class MenuFragment extends Fragment {
@@ -107,6 +112,42 @@ public class MenuFragment extends Fragment {
         menuItem.setTitle(fullName);
         MenuItem statusColor = null;
 
+      final   MenuItem itemCart = menu.findItem(R.id.notificationBox);
+      final   LayerDrawable icon = (LayerDrawable) itemCart.getIcon();
+
+
+        // get Unread notification count
+
+        ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
+
+        Call<Integer> call= apiService.UnReadNotificationCount(session.getUserDetails().get(SessionManager.KEY_CONTACTID).toString());
+
+        call.enqueue(new Callback<Integer>() {
+            @Override
+            public void onResponse(Call<Integer> call, Response<Integer> response) {
+
+               int count =response.body();
+               session.NotificationCount(count);
+            }
+
+            @Override
+            public void onFailure(Call<Integer> call, Throwable t) {
+
+            }
+        });
+
+        String count =session.getUserDetails().get(SessionManager.KEY_COUNT);
+        if(!count.equals("0")){
+            setBadgeCount(getActivity().getApplicationContext(), icon, count);
+        }
+
+//end
+
+
+
+
+
+
         int status= Integer.parseInt(session.getUserDetails().get(SessionManager.KEY_STATUS));
 
         statusColor = checkStatus(status);
@@ -116,8 +157,9 @@ public class MenuFragment extends Fragment {
 
     private void styleMenuOnclick(MenuItem item, int status, MenuItem prevItem){
 
+
         StyleSpan styleSpan = new StyleSpan(Typeface.BOLD_ITALIC);
-        ForegroundColorSpan foregroundColorSpan = new ForegroundColorSpan(Color.GRAY);
+        ForegroundColorSpan foregroundColorSpan = new ForegroundColorSpan(Color.parseColor("#333333"));
         RelativeSizeSpan relativeSizeSpan = new RelativeSizeSpan(1.4f);
 
         //remove style
@@ -209,5 +251,6 @@ public class MenuFragment extends Fragment {
 
         session.logoutUser();
     }
+
 
 }

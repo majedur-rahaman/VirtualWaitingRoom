@@ -6,7 +6,7 @@
     tools:context="com.example.majed.virtualwaitingroom.activity.MainActivity">
 
     <item
-        android:id="@+id/notificationBox" android:icon="@drawable/ic_mail_outline_black_24dp"  app:showAsAction="always"   android:title="Inbox"/>
+        android:id="@+id/notificationBox" android:icon="@drawable/ic_menu_cart"  app:showAsAction="always"   android:title="Inbox"/>
     <item
         android:id="@+id/UserName"  app:showAsAction="always" android:title="Eric DC" />
     <item

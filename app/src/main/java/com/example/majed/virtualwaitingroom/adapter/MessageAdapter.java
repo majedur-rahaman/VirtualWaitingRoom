@@ -1,10 +1,15 @@
 package com.example.majed.virtualwaitingroom.adapter;
 
+import android.app.Activity;
+import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.LayerDrawable;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -13,6 +18,8 @@ import android.widget.TextView;
 
 import com.example.majed.virtualwaitingroom.R;
 import com.example.majed.virtualwaitingroom.Session.SessionManager;
+import com.example.majed.virtualwaitingroom.activity.NotificationActivity;
+import com.example.majed.virtualwaitingroom.fragment.MenuFragment;
 import com.example.majed.virtualwaitingroom.model.OnlineCallStatus;
 import com.example.majed.virtualwaitingroom.model.OnlineConversation;
 import com.example.majed.virtualwaitingroom.rest.ApiClient;
@@ -24,6 +31,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.example.majed.virtualwaitingroom.helper.BadgeChange.setBadgeCount;
+
 /**
  * Created by majed on 7/27/2017.
  */
@@ -34,7 +43,6 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
     private int rawLayout;
     private Context context;
     SessionManager session;
-
     final  String messageUnRead=" ,want's to connect with video conversation,call now.";
     final  String messageRead=" ,has connect with video conversation.";
 
@@ -61,6 +69,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
         this.notifications=notifications;
         this.rawLayout=rawLayout;
         this.context=context;
+
     }
 
     @Override
@@ -106,6 +115,13 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
 
                     }
                 });
+
+//                MenuItem itemCart=menu.findItem(R.id.notificationBox);
+//                LayerDrawable icon = (LayerDrawable) itemCart.getIcon();
+//                setBadgeCount(context.getApplicationContext(), icon, "9");
+
+                ((Activity)context).invalidateOptionsMenu();
+
             }
         });
 

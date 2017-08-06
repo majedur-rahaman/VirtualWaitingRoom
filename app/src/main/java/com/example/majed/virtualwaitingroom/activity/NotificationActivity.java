@@ -1,6 +1,7 @@
 package com.example.majed.virtualwaitingroom.activity;
 
 import android.content.Intent;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 import com.example.majed.virtualwaitingroom.R;
 import com.example.majed.virtualwaitingroom.Session.SessionManager;
 import com.example.majed.virtualwaitingroom.adapter.MessageAdapter;
+import com.example.majed.virtualwaitingroom.fragment.MenuFragment;
 import com.example.majed.virtualwaitingroom.model.OnlineConversation;
 import com.example.majed.virtualwaitingroom.rest.ApiClient;
 import com.example.majed.virtualwaitingroom.rest.ApiInterface;
@@ -26,6 +28,7 @@ import retrofit2.Response;
 
 public class NotificationActivity extends AppCompatActivity {
     SessionManager session;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +46,22 @@ public class NotificationActivity extends AppCompatActivity {
 
 
         LoadNotification();
+
+        //Swipe Refresh
+        final SwipeRefreshLayout swipeRefreshLayout=(SwipeRefreshLayout)findViewById(R.id.swiperefresh);
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+
+                LoadNotification();
+
+                if (swipeRefreshLayout.isRefreshing()) {
+                    swipeRefreshLayout.setRefreshing(false);
+                }
+            }
+        });
+
     }
 
     private void LoadNotification(){
@@ -70,7 +89,7 @@ public class NotificationActivity extends AppCompatActivity {
                 }
                 else
                 {
-                    recyclerView.setAdapter(new MessageAdapter(notifications, R.layout.list_item_message, getApplicationContext()));
+                    recyclerView.setAdapter(new MessageAdapter(notifications, R.layout.list_item_message, NotificationActivity.this));
                 }
             }
 

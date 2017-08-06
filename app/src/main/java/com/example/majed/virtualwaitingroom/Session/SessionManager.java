@@ -45,6 +45,9 @@ public class SessionManager {
 
     // Role (make variable public to access from outside)
     public static final String KEY_ROLE = "Role";
+
+    // Notification Count (make variable public to access from outside)
+    public static final String KEY_COUNT = "Count";
     // Constructor
     public SessionManager(Context context){
         this._context = context;
@@ -76,6 +79,14 @@ public class SessionManager {
 
     public void setUpdatedOnlineStatus(int onlineStatus ){
         editor.putInt(KEY_STATUS, onlineStatus);
+        // commit changes
+        editor.commit();
+    }
+
+    //Set online status
+
+    public void NotificationCount(int count ){
+        editor.putInt(KEY_COUNT, count);
         // commit changes
         editor.commit();
     }
@@ -135,6 +146,9 @@ public class SessionManager {
         user.put(KEY_CONTACTID, pref.getString(KEY_CONTACTID, null));
         // user role
         user.put(KEY_ROLE, pref.getString(KEY_ROLE, null));
+
+        // user Unread Notifcation Count
+        user.put(KEY_COUNT, Integer.toString(pref.getInt(KEY_COUNT, 0)));
 
         // return user
         return user;

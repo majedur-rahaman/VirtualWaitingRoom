@@ -108,6 +108,7 @@ public class LoginActivity extends Activity {
                 {
 
                     session.createLoginSession(userInformation.FullName,userInformation.OnlineStatus,userInformation.ContactId,userInformation.Role);
+                    UnReadNotification();
                     Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                     startActivity(intent);
                   //  setContentView(R.layout.activity_main);
@@ -129,6 +130,34 @@ public class LoginActivity extends Activity {
         // disable going back to the MainActivity
         moveTaskToBack(true);
     }
+
+    private void UnReadNotification(){
+
+        // get Unread notification count
+
+        ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
+
+        Call<Integer> call= apiService.UnReadNotificationCount(session.getUserDetails().get(SessionManager.KEY_CONTACTID).toString());
+
+        call.enqueue(new Callback<Integer>() {
+            @Override
+            public void onResponse(Call<Integer> call, Response<Integer> response) {
+
+                int count =response.body();
+                session.NotificationCount(count);
+            }
+
+            @Override
+            public void onFailure(Call<Integer> call, Throwable t) {
+
+            }
+        });
+    }
+
+
+
+
+
 
 
 }
