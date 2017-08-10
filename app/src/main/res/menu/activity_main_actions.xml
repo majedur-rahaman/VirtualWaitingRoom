@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.majed.virtualwaitingroom.activity.MainActivity">
+    tools:context="com.example.majed.virtualwaitingroom.majed.example.majed.virtualwaitingroom.activity.MainActivity">
 
     <item
         android:id="@+id/notificationBox" android:icon="@drawable/ic_menu_cart"  app:showAsAction="always"   android:title="Inbox"/>

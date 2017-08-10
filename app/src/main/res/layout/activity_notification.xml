@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.majed.virtualwaitingroom.activity.NotificationActivity">
+    tools:context="com.example.majed.virtualwaitingroom.majed.example.majed.virtualwaitingroom.activity.NotificationActivity">
 
-    <fragment android:name="com.example.majed.virtualwaitingroom.fragment.MenuFragment"
+    <fragment android:name="mmh.app.majed.virtualwaitingroom.fragment.MenuFragment"
         android:id="@+id/menuItemFragment"
         android:layout_weight="1"
         android:layout_width="match_parent"
